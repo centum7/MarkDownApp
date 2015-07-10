@@ -1,0 +1,36 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+     <!--<FrameLayout-->
+        <!--android:id="@+id/container"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textNoSuggestions"
+        android:hint="Title"
+        android:id="@+id/myMemoTitle" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:hint="Body"
+        android:id="@+id/myMemoBody" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
+        android:text="Updated: -------"
+        android:id="@+id/myMemoUpdated" />
+
+</LinearLayout>
