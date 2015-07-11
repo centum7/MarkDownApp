@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".EditActivity">
+    <item
+        android:id="@+id/action_save"
+        android:title="save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="100"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_tab"
+        android:title="save"
+        android:icon="@android:drawable/ic_media_play"
+        android:orderInCategory="100"
+        app:showAsAction="always|withText" />
+
+</menu>
+<!-- From: file:/C:/Users/takurou/Documents/MarkDownApp/app/src/main/res/menu/menu_edit.xml -->

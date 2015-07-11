@@ -187,6 +187,11 @@ public class EditActivity extends AppCompatActivity {
                 }
                 break;
 
+            case R.id.action_tab:
+                Intent intent = new Intent(EditActivity.this, TabEdit.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
 
         }
 

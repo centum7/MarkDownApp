@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks {
 
     private SimpleCursorAdapter adapter;
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         String[] from = {
                 MyMemoContract.Memos.COLUMN_TITLE,
