@@ -37,9 +37,6 @@ import android.net.Uri;
 
         @Override
         public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-//        if (uriMatcher.match(uri) != MEMOS) {
-//            throw new IllegalArgumentException("Unknown URI:" + uri);
-//        }
 
             switch (uriMatcher.match(uri)) {
                 case MEMOS:

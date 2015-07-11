@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MarkDown のコピー.iml" filepath="$PROJECT_DIR$/MarkDown のコピー.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MarkDownApp.iml" filepath="$PROJECT_DIR$/MarkDownApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
