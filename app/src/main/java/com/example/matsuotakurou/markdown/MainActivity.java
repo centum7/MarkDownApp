@@ -25,11 +25,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //アクションバーの横にアイコンを表示
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
-        //Listにデータベース値を張り付ける
 
         String[] from = {
                 MyMemoContract.Memos.COLUMN_TITLE,
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        
+
         int id = item.getItemId();
         if (id == R.id.action_add) {
             Intent intent = new Intent(this, EditActivity.class);
