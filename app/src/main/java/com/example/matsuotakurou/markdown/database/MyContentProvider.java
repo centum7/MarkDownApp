@@ -1,4 +1,4 @@
-package com.example.matsuotakurou.markdown;
+package com.example.matsuotakurou.markdown.database;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

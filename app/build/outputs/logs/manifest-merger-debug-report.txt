@@ -41,7 +41,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:16:17
 	android:name
 		ADDED from AndroidManifest.xml:16:27
-provider#com.example.matsuotakurou.markdown.MyContentProvider
+provider#com.example.matsuotakurou.markdown.database.MyContentProvider
 ADDED from AndroidManifest.xml:20:9
 	android:exported
 		ADDED from AndroidManifest.xml:23:13

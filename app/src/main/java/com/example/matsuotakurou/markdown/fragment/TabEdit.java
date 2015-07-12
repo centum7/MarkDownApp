@@ -1,4 +1,4 @@
-package com.example.matsuotakurou.markdown;
+package com.example.matsuotakurou.markdown.fragment;
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.matsuotakurou.markdown.R;
 
 
 public class TabEdit extends AppCompatActivity {

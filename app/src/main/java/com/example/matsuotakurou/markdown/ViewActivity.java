@@ -15,6 +15,9 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.example.matsuotakurou.markdown.database.MyContentProvider;
+import com.example.matsuotakurou.markdown.database.MyMemoContract;
+
 import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;

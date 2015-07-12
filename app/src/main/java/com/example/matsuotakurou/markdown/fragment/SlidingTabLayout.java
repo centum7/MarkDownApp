@@ -1,4 +1,4 @@
-package com.example.matsuotakurou.markdown;
+package com.example.matsuotakurou.markdown.fragment;
 
 /**
  * Created by takurou on 2015/07/12.
@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.matsuotakurou.markdown.R;
 
 
 public class SlidingTabLayout extends HorizontalScrollView {

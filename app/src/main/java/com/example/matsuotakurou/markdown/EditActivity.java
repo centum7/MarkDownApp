@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.matsuotakurou.markdown.database.MyContentProvider;
+import com.example.matsuotakurou.markdown.database.MyMemoContract;
+import com.example.matsuotakurou.markdown.fragment.TabEdit;
+
 import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;

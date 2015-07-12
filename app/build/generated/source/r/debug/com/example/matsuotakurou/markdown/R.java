@@ -1514,7 +1514,7 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f02003a;
     }
     public static final class id {
-        public static final int action_add=0x7f09005b;
+        public static final int action_add=0x7f09005a;
         public static final int action_bar=0x7f090040;
         public static final int action_bar_activity_content=0x7f090000;
         public static final int action_bar_container=0x7f09003f;
@@ -1523,16 +1523,16 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f090024;
         public static final int action_bar_title=0x7f090023;
         public static final int action_context_bar=0x7f090041;
-        public static final int action_delete=0x7f09005e;
-        public static final int action_edit=0x7f09005d;
+        public static final int action_delete=0x7f09005d;
+        public static final int action_edit=0x7f09005c;
         public static final int action_menu_divider=0x7f090002;
         public static final int action_menu_presenter=0x7f090003;
         public static final int action_mode_bar=0x7f09003d;
         public static final int action_mode_bar_stub=0x7f09003c;
         public static final int action_mode_close_button=0x7f090025;
-        public static final int action_save=0x7f090059;
-        public static final int action_settings=0x7f09005c;
-        public static final int action_tab=0x7f09005a;
+        public static final int action_save=0x7f090058;
+        public static final int action_settings=0x7f09005b;
+        public static final int action_tab=0x7f090059;
         public static final int activity_chooser_view_content=0x7f090026;
         public static final int alertTitle=0x7f090030;
         public static final int always=0x7f090016;
@@ -1554,7 +1554,7 @@ containing a value of this type.
         public static final int expanded_menu=0x7f090037;
         public static final int home=0x7f090004;
         public static final int homeAsUp=0x7f09000d;
-        public static final int htmlview=0x7f090058;
+        public static final int htmlview=0x7f090057;
         public static final int icon=0x7f09002b;
         public static final int ifRoom=0x7f090018;
         public static final int image=0x7f090028;
@@ -1569,7 +1569,7 @@ containing a value of this type.
         public static final int never=0x7f090019;
         public static final int none=0x7f09000e;
         public static final int normal=0x7f09000a;
-        public static final int pager=0x7f090056;
+        public static final int pager=0x7f090055;
         public static final int parentPanel=0x7f09002d;
         public static final int progress_circular=0x7f090005;
         public static final int progress_horizontal=0x7f090006;
@@ -1597,13 +1597,12 @@ containing a value of this type.
         public static final int src_over=0x7f090022;
         public static final int submit_area=0x7f09004b;
         public static final int tabMode=0x7f09000b;
-        public static final int tabs=0x7f090055;
+        public static final int tabs=0x7f090054;
         public static final int textSpacerNoButtons=0x7f090033;
-        public static final int textView=0x7f090057;
+        public static final int textView=0x7f090056;
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
-        public static final int tool_bar=0x7f090054;
-        public static final int toolbar=0x7f090052;
+        public static final int tool_bar=0x7f090052;
         public static final int topPanel=0x7f09002e;
         public static final int up=0x7f090008;
         public static final int useLogo=0x7f090012;

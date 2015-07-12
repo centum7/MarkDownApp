@@ -18,7 +18,7 @@
         </activity>
 
         <provider
-            android:name=".MyContentProvider"
+            android:name=".database.MyContentProvider"
             android:authorities="com.example.matsuotakurou.markdown.mycontentprovider"
             android:exported="false" />
 

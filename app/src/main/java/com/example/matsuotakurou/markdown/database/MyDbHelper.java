@@ -1,4 +1,4 @@
-package com.example.matsuotakurou.markdown;
+package com.example.matsuotakurou.markdown.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

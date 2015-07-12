@@ -6,8 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.matsuotakurou.markdown.R;
-import com.example.matsuotakurou.markdown.SlidingTabLayout;
-import com.example.matsuotakurou.markdown.ViewPagerAdapter;
+import com.example.matsuotakurou.markdown.fragment.SlidingTabLayout;
+import com.example.matsuotakurou.markdown.fragment.ViewPagerAdapter;
 
 public class TabEditActivity extends AppCompatActivity {
 

@@ -24,7 +24,7 @@
         </activity>
 
         <provider
-            android:name="com.example.matsuotakurou.markdown.MyContentProvider"
+            android:name="com.example.matsuotakurou.markdown.database.MyContentProvider"
             android:authorities="com.example.matsuotakurou.markdown.mycontentprovider"
             android:exported="false" />
 
