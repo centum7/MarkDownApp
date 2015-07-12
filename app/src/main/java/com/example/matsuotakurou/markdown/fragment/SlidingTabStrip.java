@@ -3,6 +3,7 @@ package com.example.matsuotakurou.markdown.fragment;
 /**
  * Created by takurou on 2015/07/12.
  */
+
 import android.R;
 import android.content.Context;
 import android.graphics.Canvas;
