@@ -7,7 +7,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -16,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.matsuotakurou.markdown.database.MyContentProvider;
 import com.example.matsuotakurou.markdown.database.MyMemoContract;
-import com.example.matsuotakurou.markdown.fragment.TabEdit;
+
 
 import org.markdown4j.Markdown4jProcessor;
 
@@ -39,6 +41,9 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
+        Toolbar  toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
         myMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
@@ -192,7 +197,7 @@ public class EditActivity extends AppCompatActivity {
                 break;
 
             case R.id.action_tab:
-                Intent intent = new Intent(EditActivity.this, TabEdit.class);
+                Intent intent = new Intent(EditActivity.this, TabEditActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;

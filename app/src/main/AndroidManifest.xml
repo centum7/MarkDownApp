@@ -34,6 +34,7 @@
             android:name=".TabEditActivity"
             android:label="@string/title_activity_tab_edit" >
         </activity>
+
     </application>
 
 </manifest>

@@ -208,6 +208,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_fragtest">Fragtest</string>
     <string name="title_activity_tab_edit">TabEditActivity</string>
     <string name="title_activity_view">ViewActivity</string>
     <!-- From: file:/C:/Users/takurou/Documents/MarkDownApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/res/values/values.xml -->

@@ -1514,7 +1514,7 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f02003a;
     }
     public static final class id {
-        public static final int action_add=0x7f09005a;
+        public static final int action_add=0x7f09005b;
         public static final int action_bar=0x7f090040;
         public static final int action_bar_activity_content=0x7f090000;
         public static final int action_bar_container=0x7f09003f;
@@ -1531,7 +1531,7 @@ containing a value of this type.
         public static final int action_mode_bar_stub=0x7f09003c;
         public static final int action_mode_close_button=0x7f090025;
         public static final int action_save=0x7f090058;
-        public static final int action_settings=0x7f09005b;
+        public static final int action_settings=0x7f09005a;
         public static final int action_tab=0x7f090059;
         public static final int activity_chooser_view_content=0x7f090026;
         public static final int alertTitle=0x7f090030;
@@ -1563,9 +1563,9 @@ containing a value of this type.
         public static final int middle=0x7f090015;
         public static final int multiply=0x7f09001e;
         public static final int myListView=0x7f090053;
-        public static final int myMemoBody=0x7f090050;
-        public static final int myMemoTitle=0x7f09004f;
-        public static final int myMemoUpdated=0x7f090051;
+        public static final int myMemoBody=0x7f090051;
+        public static final int myMemoTitle=0x7f090050;
+        public static final int myMemoUpdated=0x7f090052;
         public static final int never=0x7f090019;
         public static final int none=0x7f09000e;
         public static final int normal=0x7f09000a;
@@ -1602,7 +1602,7 @@ containing a value of this type.
         public static final int textView=0x7f090056;
         public static final int title=0x7f09002c;
         public static final int title_template=0x7f09002f;
-        public static final int tool_bar=0x7f090052;
+        public static final int tool_bar=0x7f09004f;
         public static final int topPanel=0x7f09002e;
         public static final int up=0x7f090008;
         public static final int useLogo=0x7f090012;
@@ -1641,22 +1641,24 @@ containing a value of this type.
         public static final int abc_select_dialog_material=0x7f040017;
         public static final int abc_simple_dropdown_hint=0x7f040018;
         public static final int activity_edit=0x7f040019;
-        public static final int activity_main=0x7f04001a;
-        public static final int activity_tab_edit=0x7f04001b;
-        public static final int activity_view=0x7f04001c;
-        public static final int select_dialog_item_material=0x7f04001d;
-        public static final int select_dialog_multichoice_material=0x7f04001e;
-        public static final int select_dialog_singlechoice_material=0x7f04001f;
-        public static final int support_simple_spinner_dropdown_item=0x7f040020;
-        public static final int tab_1=0x7f040021;
-        public static final int tab_2=0x7f040022;
-        public static final int tool_bar=0x7f040023;
+        public static final int activity_fragtest=0x7f04001a;
+        public static final int activity_main=0x7f04001b;
+        public static final int activity_tab_edit=0x7f04001c;
+        public static final int activity_view=0x7f04001d;
+        public static final int select_dialog_item_material=0x7f04001e;
+        public static final int select_dialog_multichoice_material=0x7f04001f;
+        public static final int select_dialog_singlechoice_material=0x7f040020;
+        public static final int support_simple_spinner_dropdown_item=0x7f040021;
+        public static final int tab_1=0x7f040022;
+        public static final int tab_2=0x7f040023;
+        public static final int tool_bar=0x7f040024;
     }
     public static final class menu {
         public static final int menu_edit=0x7f0d0000;
-        public static final int menu_main=0x7f0d0001;
-        public static final int menu_tab_edit=0x7f0d0002;
-        public static final int menu_view=0x7f0d0003;
+        public static final int menu_fragtest=0x7f0d0001;
+        public static final int menu_main=0x7f0d0002;
+        public static final int menu_tab_edit=0x7f0d0003;
+        public static final int menu_view=0x7f0d0004;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
@@ -1684,8 +1686,9 @@ containing a value of this type.
         public static final int hello_blank_fragment=0x7f0b0013;
         public static final int hello_world=0x7f0b0014;
         public static final int title_activity_edit=0x7f0b0015;
-        public static final int title_activity_tab_edit=0x7f0b0016;
-        public static final int title_activity_view=0x7f0b0017;
+        public static final int title_activity_fragtest=0x7f0b0016;
+        public static final int title_activity_tab_edit=0x7f0b0017;
+        public static final int title_activity_view=0x7f0b0018;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0c0000;
