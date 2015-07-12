@@ -49,24 +49,6 @@ public class EditActivity extends AppCompatActivity {
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
         myMemoUpdated = (TextView) findViewById(R.id.myMemoUpdated);
 
-/*下記部分を記述 <
-
- */
-
-//        final ActionBar actionBar = getActionBar();
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//
-//        actionBar.addTab(actionBar.newTab()
-//                .setText("First")
-//                .setTabListener(new TabListener<BlankFragment>(
-//                        this, "tag1", BlankFragment.class)));
-//        actionBar.addTab(actionBar.newTab()
-//                .setText("Second")
-//                .setTabListener(new TabListener<BlankFragment_view>(
-//                        this, "tag2", BlankFragment_view.class)));
-
-
-
         Intent intent = getIntent();
 
         Log.i("check_Edit1", Long.toString(memoId));
@@ -77,18 +59,8 @@ public class EditActivity extends AppCompatActivity {
         memoId = intent.getLongExtra("key", memoId);
 
         Log.i("check_Edit2", Long.toString(memoId));
-//
-//        myMemoTitle.setText(title);
-//        myMemoBody.setText(body);
-//        myMemoUpdated.setText(updated);
-
-//        String keyword = i.getStringExtra(“KEYWORD”);
-//        boolean isAnd = i.getBooleanExtra(“AND”, true);
-
-//                  >
 
         isNewMemo = memoId == 0L ? true : false;
-
 
         if (intent.getStringExtra("editBody") == null) {
             // new memo

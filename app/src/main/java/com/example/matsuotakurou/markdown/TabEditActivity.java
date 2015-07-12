@@ -28,6 +28,8 @@ public class TabEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tab_edit);
 
 
+
+
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
