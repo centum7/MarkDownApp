@@ -1645,14 +1645,13 @@ containing a value of this type.
         public static final int activity_main=0x7f04001a;
         public static final int activity_tab_edit=0x7f04001b;
         public static final int activity_view=0x7f04001c;
-        public static final int fragment_blank=0x7f04001d;
-        public static final int select_dialog_item_material=0x7f04001e;
-        public static final int select_dialog_multichoice_material=0x7f04001f;
-        public static final int select_dialog_singlechoice_material=0x7f040020;
-        public static final int support_simple_spinner_dropdown_item=0x7f040021;
-        public static final int tab_1=0x7f040022;
-        public static final int tab_2=0x7f040023;
-        public static final int tool_bar=0x7f040024;
+        public static final int select_dialog_item_material=0x7f04001d;
+        public static final int select_dialog_multichoice_material=0x7f04001e;
+        public static final int select_dialog_singlechoice_material=0x7f04001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f040020;
+        public static final int tab_1=0x7f040021;
+        public static final int tab_2=0x7f040022;
+        public static final int tool_bar=0x7f040023;
     }
     public static final class menu {
         public static final int menu_edit=0x7f0d0000;
