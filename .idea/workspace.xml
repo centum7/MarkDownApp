@@ -96,11 +96,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SlidingTabStrip.java" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="SlidingTabStrip.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/SlidingTabStrip.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2669">
-                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.25176057" vertical-offset="1999" max-vertical-offset="2567">
+                  <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -120,10 +120,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TabEditActivity.java" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="TabEditActivity.java" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/TabEditActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3873874" vertical-offset="584" max-vertical-offset="2669">
+                <state vertical-scroll-proportion="0.0" vertical-offset="1604" max-vertical-offset="2669">
                   <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -158,7 +158,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="TabEditActivity.java" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="TabEditActivity.java" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/TabEditActivity.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="2.2252252" vertical-offset="584" max-vertical-offset="2669">
@@ -1031,10 +1031,10 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_tab_edit.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/ViewPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/SlidingTabStrip.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/color.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/EditActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/TabEditActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/SlidingTabStrip.java" />
       </list>
     </option>
   </component>
@@ -1752,16 +1752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/SlidingTabStrip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2669">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/color.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
@@ -1858,12 +1848,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/TabEditActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.2252252" vertical-offset="584" max-vertical-offset="2669">
-          <caret line="107" column="49" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1604" max-vertical-offset="2669">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3965#4178#0" expanded="true" />
             <element signature="e#4167#4168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/matsuotakurou/markdown/fragment/SlidingTabStrip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25176057" vertical-offset="1999" max-vertical-offset="2567">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
