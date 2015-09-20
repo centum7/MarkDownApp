@@ -3,15 +3,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-     <!--<FrameLayout-->
-        <!--android:id="@+id/container"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" />-->
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textNoSuggestions"
+        android:theme="@style/EditTextColorControl"
         android:hint="Title"
         android:id="@+id/myMemoTitle" />
 
@@ -23,6 +26,7 @@
         android:gravity="top"
         android:inputType="textMultiLine|textNoSuggestions"
         android:hint="Body"
+        android:theme="@style/EditTextColorControl"
         android:id="@+id/myMemoBody" />
 
     <TextView
@@ -30,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_margin="8dp"
-        android:text="Updated: -------"
         android:id="@+id/myMemoUpdated" />
 
 </LinearLayout>

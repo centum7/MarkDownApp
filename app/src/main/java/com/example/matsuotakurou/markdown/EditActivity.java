@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,9 +37,18 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
+
+
         myMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
         myMemoUpdated = (TextView) findViewById(R.id.myMemoUpdated);
+
+
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
 
 /*下記部分を記述 <
 

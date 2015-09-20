@@ -4,6 +4,14 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
+
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -15,7 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="タイトル"
-
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#ff9529"
             android:id="@+id/textView"
             android:layout_weight="0.01" />
 
@@ -23,6 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="title"
+            android:background="#ffa243"
+            android:gravity="center"
             android:id="@+id/myMemoTitle"
             android:layout_weight="0.05" />
     </LinearLayout>
@@ -34,11 +46,4 @@
         android:layout_weight="1"
         android:id="@+id/htmlview" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="8dp"
-        android:text="Updated: -------"
-        android:id="@+id/myMemoUpdated" />
 </LinearLayout>
