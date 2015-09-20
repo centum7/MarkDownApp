@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +47,10 @@ public class ViewActivity extends AppCompatActivity {
         myMemoUpdated = (TextView) findViewById(R.id.myMemoUpdated);
         //webview
          webView = (WebView)findViewById(R.id.htmlview);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
 
 
         Intent intent = getIntent();

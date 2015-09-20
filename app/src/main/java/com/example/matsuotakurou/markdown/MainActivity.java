@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
         String[] from = {
                 MyMemoContract.Memos.COLUMN_TITLE,
                 MyMemoContract.Memos.COLUMN_UPDATED,
