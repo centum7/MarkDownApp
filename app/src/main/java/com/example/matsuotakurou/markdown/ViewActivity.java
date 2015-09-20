@@ -96,7 +96,6 @@ public class ViewActivity extends AppCompatActivity {
 
         myMemoTitle.setText(title);
         webView.loadData(htmlbody, "text/html; charset=UTF-8", null);
-        myMemoUpdated.setText(updated);
     }
 
 
@@ -159,14 +158,7 @@ public class ViewActivity extends AppCompatActivity {
                 alertDialog.create().show();
                 break;
 
-
-
-
         }
-
-
-
-
 
         return super.onOptionsItemSelected(item);
     }
