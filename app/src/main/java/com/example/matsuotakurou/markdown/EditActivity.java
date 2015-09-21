@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.markdown4j.Markdown4jProcessor;
@@ -26,10 +25,8 @@ public class EditActivity extends AppCompatActivity {
 
     private EditText myMemoTitle;
     private EditText myMemoBody;
-    private TextView myMemoUpdated;
     private String title = "";
     private String body = "";
-    private String updated = "";
     private String htmlbody = "";
 
     @Override
@@ -41,12 +38,12 @@ public class EditActivity extends AppCompatActivity {
 
         myMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
-        myMemoUpdated = (TextView) findViewById(R.id.myMemoUpdated);
 
 
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("編集画面");
         setSupportActionBar(toolbar);
 
 
@@ -74,7 +71,6 @@ public class EditActivity extends AppCompatActivity {
 
         title = intent.getStringExtra("editTitle");
         body = intent.getStringExtra("editBody");
-        updated = intent.getStringExtra("editUpdate");
         memoId = intent.getLongExtra("key", memoId);
 
         Log.i("check_Edit2", Long.toString(memoId));
@@ -105,8 +101,6 @@ public class EditActivity extends AppCompatActivity {
         String[] projection = new String[]{
                 MyMemoContract.Memos.COLUMN_TITLE,
                 MyMemoContract.Memos.COLUMN_BODY,
-                MyMemoContract.Memos.COLUMN_UPDATED
-
         };
         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
         String[] selectionArgs = new String[]{Long.toString(memoId)};
@@ -120,11 +114,9 @@ public class EditActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             title = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_TITLE));
             body = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_BODY));
-            updated = "Updated: " + cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_UPDATED));
         }
         myMemoTitle.setText(title);
         myMemoBody.setText(body);
-        myMemoUpdated.setText(updated);
     }
 
 
@@ -173,13 +165,6 @@ public class EditActivity extends AppCompatActivity {
                         getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
                     } else {
                         // updated
-                        values.put(
-                                MyMemoContract.Memos.COLUMN_UPDATED,
-                                android.text.format.DateFormat.format(
-                                        "yyyy-MM-dd kk:mm:ss",
-                                        new java.util.Date()
-                                ).toString()
-                        );
                         Log.i("check_Edit3", Long.toString(memoId));
                         Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
                         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
