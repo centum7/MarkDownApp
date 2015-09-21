@@ -44,7 +44,7 @@ public class ViewActivity extends AppCompatActivity {
         mWebView = (WebView)findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("表示画面");
+        toolbar.setTitle("プレビュー");
         setSupportActionBar(toolbar);
 
 

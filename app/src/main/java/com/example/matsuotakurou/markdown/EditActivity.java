@@ -48,7 +48,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("編集画面");
+        toolbar.setTitle("編集");
         setSupportActionBar(toolbar);
 
 
@@ -132,7 +132,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 if (title.equals("")) {
                     Toast.makeText(
                             this,
-                            "Please enter title",
+                            "タイトルを入力してください",
                             Toast.LENGTH_LONG
                     ).show();
                 } else {
@@ -167,8 +167,8 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
             case R.id.action_delete:
 
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                alertDialog.setTitle("Delete Memo");
-                alertDialog.setMessage("Are you sure to delete this memo?");
+                alertDialog.setTitle("削除の確認");
+                alertDialog.setMessage("本当に削除してもよいですか");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -205,7 +205,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 if (title.equals("")) {
                     Toast.makeText(
                             this,
-                            "Please enter title",
+                            "タイトルを入力してください。",
                             Toast.LENGTH_LONG
                     ).show();
                 } else {
