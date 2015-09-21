@@ -10,10 +10,17 @@
         app:showAsAction="always|withText" />
 
     <item
-    android:id="@+id/action_delete"
-    android:title="delete"
-    android:icon="@android:drawable/ic_menu_delete"
-    android:orderInCategory="100"
-    app:showAsAction="always|withText" />
+        android:id="@+id/action_delete"
+        android:title="delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="100"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/action_from_edit_to_view"
+        android:title="action_from_edit_to_view"
+        android:icon="@android:drawable/ic_menu_view"
+        android:orderInCategory="100"
+        app:showAsAction="always|withText" />
 
 </menu>

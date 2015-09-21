@@ -1,9 +1,12 @@
 package com.example.matsuotakurou.markdown;
 
+import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +23,7 @@ import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;
 
-public class EditActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks{
 
     private boolean isNewMemo = true;
     private long memoId;
@@ -49,24 +52,6 @@ public class EditActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-/*下記部分を記述 <
-
- */
-
-//        final ActionBar actionBar = getActionBar();
-//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-//
-//        actionBar.addTab(actionBar.newTab()
-//                .setText("First")
-//                .setTabListener(new TabListener<BlankFragment>(
-//                        this, "tag1", BlankFragment.class)));
-//        actionBar.addTab(actionBar.newTab()
-//                .setText("Second")
-//                .setTabListener(new TabListener<BlankFragment_view>(
-//                        this, "tag2", BlankFragment_view.class)));
-
-
-
         Intent intent = getIntent();
 
         Log.i("check_Edit1", Long.toString(memoId));
@@ -76,15 +61,7 @@ public class EditActivity extends AppCompatActivity {
         memoId = intent.getLongExtra("key", memoId);
 
         Log.i("check_Edit2", Long.toString(memoId));
-//
-//        myMemoTitle.setText(title);
-//        myMemoBody.setText(body);
-//        myMemoUpdated.setText(updated);
 
-//        String keyword = i.getStringExtra(“KEYWORD”);
-//        boolean isAnd = i.getBooleanExtra(“AND”, true);
-
-//                  >
 
         isNewMemo = memoId == 0L ? true : false;
 
@@ -119,6 +96,8 @@ public class EditActivity extends AppCompatActivity {
         }
         myMemoTitle.setText(title);
         myMemoBody.setText(body);
+
+        getLoaderManager().initLoader(0, null, this);
     }
 
 
@@ -178,6 +157,7 @@ public class EditActivity extends AppCompatActivity {
                                 selectionArgs
                         );
                     }
+                    Log.d("intent edit action_save", String.valueOf(memoId));
                     Intent intent = new Intent(EditActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -205,8 +185,104 @@ public class EditActivity extends AppCompatActivity {
                 });
                 alertDialog.create().show();
                 break;
+
+            case R.id.action_from_edit_to_view:
+
+                /*1--------dbに保存--------1*/
+
+                title = myMemoTitle.getText().toString().trim();
+                body = myMemoBody.getText().toString().trim();
+
+                Log.i("------markdown-----Edit", "start");
+                try {
+                    htmlbody = new Markdown4jProcessor().process(body);
+                    Log.i("------markdown-----Edit", htmlbody);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                if (title.equals("")) {
+                    Toast.makeText(
+                            this,
+                            "Please enter title",
+                            Toast.LENGTH_LONG
+                    ).show();
+                } else {
+                    ContentValues values = new ContentValues();
+                    values.put(MyMemoContract.Memos.COLUMN_TITLE, title);
+                    values.put(MyMemoContract.Memos.COLUMN_BODY, body);
+                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, htmlbody);
+                    Log.i("-----markdown------edit", MyMemoContract.Memos.COLUMN_HTMLBODY.toString());
+                    if (isNewMemo) {
+                        // insert
+                        getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+                    } else {
+                        // updated
+                        Log.i("check_Edit3", Long.toString(memoId));
+                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+                        String[] selectionArgs = new String[]{Long.toString(memoId)};
+                        getContentResolver().update(
+                                uri,
+                                values,
+                                selection,
+                                selectionArgs
+                        );
+                    }
+                    /*1----------------1*/
+
+                    /*2-----編集画面に遷移-------2*/
+
+
+                    Intent intent = new Intent(EditActivity.this, ViewActivity.class);
+                    intent.putExtra("editTitle", title);
+                    intent.putExtra("editBody", body);
+                    intent.putExtra("EDIT_WEBVIEW",htmlbody);
+//                    intent.putExtra("key",memoId);
+                    Log.d("intent edit action_from_edit_to_view", String.valueOf(memoId));
+
+
+                    startActivity(intent);
+                    finish();
+
+
+
+                    /*2----------------2*/
+
+
+
+
+                }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public Loader onCreateLoader(int id, Bundle args) {
+        String[] projection = {
+                MyMemoContract.Memos.COLUMN_ID,
+                MyMemoContract.Memos.COLUMN_TITLE,
+                MyMemoContract.Memos.COLUMN_UPDATED,
+        };
+        return new CursorLoader(
+                this,
+                MyContentProvider.CONTENT_URI,
+                projection,
+                null,
+                null,
+                "updated desc"
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader loader, Object data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader loader) {
+
     }
 }

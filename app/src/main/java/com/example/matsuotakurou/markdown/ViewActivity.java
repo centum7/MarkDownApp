@@ -50,6 +50,9 @@ public class ViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        title = intent.getStringExtra("editTitle");
+        body = intent.getStringExtra("editBody");
+
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
 
@@ -118,6 +121,7 @@ public class ViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewActivity.this, EditActivity.class);
                 intent.putExtra("editTitle", title);
                 intent.putExtra("editBody", body);
+
 
 
                 intent.putExtra("key",memoId);
