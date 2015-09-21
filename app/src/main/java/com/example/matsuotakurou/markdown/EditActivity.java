@@ -234,7 +234,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
                     /*2-----編集画面に遷移-------2*/
 
-
                     Intent intent = new Intent(EditActivity.this, ViewActivity.class);
                     intent.putExtra("editTitle", title);
                     intent.putExtra("editBody", body);
@@ -242,16 +241,10 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 //                    intent.putExtra("key",memoId);
                     Log.d("intent edit action_from_edit_to_view", String.valueOf(memoId));
 
-
                     startActivity(intent);
                     finish();
 
-
-
                     /*2----------------2*/
-
-
-
 
                 }
         }
