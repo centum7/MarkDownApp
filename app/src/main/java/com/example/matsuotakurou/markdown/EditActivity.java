@@ -2,10 +2,12 @@ package com.example.matsuotakurou.markdown;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -182,7 +184,27 @@ public class EditActivity extends AppCompatActivity {
                 }
                 break;
 
+            case R.id.action_delete:
 
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setTitle("Delete Memo");
+                alertDialog.setMessage("Are you sure to delete this memo?");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+                        String[] selectionArgs = new String[] { Long.toString(memoId) };
+                        getContentResolver().delete(
+                                uri,
+                                selection,
+                                selectionArgs
+                        );
+                        finish();
+                    }
+                });
+                alertDialog.create().show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);

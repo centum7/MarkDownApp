@@ -1,9 +1,7 @@
 package com.example.matsuotakurou.markdown;
 
 
-import android.app.AlertDialog;
 import android.content.ContentUris;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -127,29 +125,29 @@ public class ViewActivity extends AppCompatActivity {
 
                 startActivity(intent);
 
-            case R.id.action_delete:
-
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                alertDialog.setTitle("Delete Memo");
-                alertDialog.setMessage("Are you sure to delete this memo?");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
-                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
-                        String[] selectionArgs = new String[] { Long.toString(memoId) };
-                        getContentResolver().delete(
-                                uri,
-                                selection,
-                                selectionArgs
-                        );
-                        Intent intent = new Intent(ViewActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                });
-                alertDialog.create().show();
-                break;
+//            case R.id.action_delete:
+//
+//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+//                alertDialog.setTitle("Delete Memo");
+//                alertDialog.setMessage("Are you sure to delete this memo?");
+//                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+//                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+//                        String[] selectionArgs = new String[] { Long.toString(memoId) };
+//                        getContentResolver().delete(
+//                                uri,
+//                                selection,
+//                                selectionArgs
+//                        );
+//                        Intent intent = new Intent(ViewActivity.this, MainActivity.class);
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(intent);
+//                    }
+//                });
+//                alertDialog.create().show();
+//                break;
 
 
 
