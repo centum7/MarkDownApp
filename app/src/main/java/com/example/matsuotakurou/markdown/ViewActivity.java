@@ -124,6 +124,7 @@ public class ViewActivity extends AppCompatActivity {
 
 
                 startActivity(intent);
+                finish();
 
 //            case R.id.action_delete:
 //
