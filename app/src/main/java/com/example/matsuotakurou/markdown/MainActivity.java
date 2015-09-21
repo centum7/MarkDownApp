@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("選択画面");
+        toolbar.setTitle("シンプルマークダウン");
         setSupportActionBar(toolbar);
 
         String[] from = {
