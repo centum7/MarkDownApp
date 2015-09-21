@@ -27,15 +27,14 @@ public class ViewActivity extends AppCompatActivity {
     private boolean isNewMemo = true;
     private long memoId;
 
-    WebView webView;
+    private WebView mWebView;
 
     private TextView myMemoTitle;
 
-    private TextView myMemoUpdated;
     private String title = "";
     private String body = "";
     private String htmlbody="";
-    private String updated = "";
+
 
 
     @Override
@@ -44,19 +43,14 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
 
         myMemoTitle = (TextView) findViewById(R.id.myMemoTitle);
-        myMemoUpdated = (TextView) findViewById(R.id.myMemoUpdated);
-        //webview
-         webView = (WebView)findViewById(R.id.htmlview);
-
+        mWebView = (WebView)findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("表示画面");
         setSupportActionBar(toolbar);
 
 
         Intent intent = getIntent();
-
-
-
 
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
@@ -67,8 +61,7 @@ public class ViewActivity extends AppCompatActivity {
         String[] projection = new String[] {
                 MyMemoContract.Memos.COLUMN_TITLE,
                 MyMemoContract.Memos.COLUMN_BODY,
-                MyMemoContract.Memos.COLUMN_HTMLBODY,
-                MyMemoContract.Memos.COLUMN_UPDATED
+                MyMemoContract.Memos.COLUMN_HTMLBODY
         };
         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
         String[] selectionArgs = new String[] { Long.toString(memoId) };
@@ -83,7 +76,6 @@ public class ViewActivity extends AppCompatActivity {
             title = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_TITLE));
             body = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_BODY));
             htmlbody = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_HTMLBODY));
-            updated = "Updated: " + cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_UPDATED));
         }
 
         try {
@@ -95,7 +87,8 @@ public class ViewActivity extends AppCompatActivity {
 
 
         myMemoTitle.setText(title);
-        webView.loadData(htmlbody, "text/html; charset=UTF-8", null);
+        mWebView.loadData(htmlbody, "text/html; charset=UTF-8", null);
+
     }
 
 
@@ -127,7 +120,7 @@ public class ViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewActivity.this, EditActivity.class);
                 intent.putExtra("editTitle", title);
                 intent.putExtra("editBody", body);
-                intent.putExtra("editUpdate",updated);
+
 
                 intent.putExtra("key",memoId);
 
@@ -158,7 +151,14 @@ public class ViewActivity extends AppCompatActivity {
                 alertDialog.create().show();
                 break;
 
+
+
+
         }
+
+
+
+
 
         return super.onOptionsItemSelected(item);
     }

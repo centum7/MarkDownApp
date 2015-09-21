@@ -28,21 +28,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("選択画面");
         setSupportActionBar(toolbar);
 
         String[] from = {
                 MyMemoContract.Memos.COLUMN_TITLE,
-                MyMemoContract.Memos.COLUMN_UPDATED,
 
         };
         int[] to = {
                 android.R.id.text1,
-                android.R.id.text2
         };
 
         adapter = new SimpleCursorAdapter(
                 this,
-                android.R.layout.simple_list_item_2,
+                android.R.layout.simple_list_item_1,
                 null,
                 from,
                 to,
