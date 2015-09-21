@@ -44,11 +44,14 @@ public class ViewActivity extends AppCompatActivity {
         mWebView = (WebView)findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("表示画面");
+        toolbar.setTitle("プレビュー");
         setSupportActionBar(toolbar);
 
 
         Intent intent = getIntent();
+
+        title = intent.getStringExtra("editTitle");
+        body = intent.getStringExtra("editBody");
 
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
@@ -118,6 +121,7 @@ public class ViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewActivity.this, EditActivity.class);
                 intent.putExtra("editTitle", title);
                 intent.putExtra("editBody", body);
+
 
 
                 intent.putExtra("key",memoId);
