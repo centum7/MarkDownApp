@@ -1,51 +1,46 @@
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
-
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="37dp"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="0.01"
-        android:layout_gravity="center_horizontal">
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Title"
-            android:elevation="4dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="#ff9529"
             android:id="@+id/textView"
-            android:layout_weight="0.01" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:hint="title"
+            android:layout_gravity="center"
+            android:layout_weight="0.01"
+            android:background="#ff9529"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/myMemoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
             android:background="#ffa243"
             android:gravity="center"
-            android:id="@+id/myMemoTitle"
-            android:layout_weight="0.05" />
+            android:hint="title" />
     </LinearLayout>
 
-
     <WebView
+        android:id="@+id/htmlview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/htmlview" />
+        android:layout_weight="1" />
 
 </LinearLayout>
