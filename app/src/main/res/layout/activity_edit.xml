@@ -1,31 +1,29 @@
-<LinearLayout
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
     <include
         android:id="@+id/tool_bar"
         layout="@layout/tool_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/myMemoTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textNoSuggestions"
-        android:theme="@style/EditTextColorControl"
         android:hint="Title"
-        android:id="@+id/myMemoTitle" />
-
+        android:inputType="textNoSuggestions"
+        android:theme="@style/EditTextColorControl" />
 
     <EditText
+        android:id="@+id/myMemoBody"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="top"
-        android:inputType="textMultiLine|textNoSuggestions"
         android:hint="Body"
-        android:theme="@style/EditTextColorControl"
-        android:id="@+id/myMemoBody" />
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:theme="@style/EditTextColorControl" />
 </LinearLayout>

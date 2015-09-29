@@ -4,8 +4,8 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/action_add"
-        android:title="add new"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="100"
+        android:title="add new"
         app:showAsAction="always|withText" />
 </menu>
