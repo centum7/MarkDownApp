@@ -20,20 +20,16 @@ import java.io.IOException;
 
 
 public class ViewActivity extends AppCompatActivity {
-
-
     private boolean isNewMemo = true;
     private long memoId;
 
+    // TODO スコープは最低限に(onCreate内でしか使用していないように見える)
     private WebView mWebView;
-
     private TextView myMemoTitle;
 
     private String title = "";
     private String body = "";
-    private String htmlbody="";
-
-
+    private String htmlbody = ""; // TODO 変数名はキャメルケースで記述する
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +37,12 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
 
         myMemoTitle = (TextView) findViewById(R.id.myMemoTitle);
-        mWebView = (WebView)findViewById(R.id.htmlview);
+        mWebView = (WebView) findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // TODO ユーザに見せるような文言はstrings.xmlに記述
         toolbar.setTitle("プレビュー");
         setSupportActionBar(toolbar);
-
 
         Intent intent = getIntent();
 
@@ -56,16 +52,17 @@ public class ViewActivity extends AppCompatActivity {
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
 
-    //webview
+        // TODO 不要なコメントは消す
+        //webview
 
         Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
-        String[] projection = new String[] {
+        String[] projection = new String[]{
                 MyMemoContract.Memos.COLUMN_TITLE,
                 MyMemoContract.Memos.COLUMN_BODY,
                 MyMemoContract.Memos.COLUMN_HTMLBODY
         };
         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
-        String[] selectionArgs = new String[] { Long.toString(memoId) };
+        String[] selectionArgs = new String[]{Long.toString(memoId)};
         Cursor cursor = getContentResolver().query(
                 uri,
                 projection,
@@ -86,17 +83,14 @@ public class ViewActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         myMemoTitle.setText(title);
         mWebView.loadData(htmlbody, "text/html; charset=UTF-8", null);
-
     }
-
-
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // TODO 不要なコメントは消す
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_view, menu);
         if (isNewMemo) {
@@ -107,6 +101,7 @@ public class ViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO 不要なコメントは消す
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -121,15 +116,11 @@ public class ViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewActivity.this, EditActivity.class);
                 intent.putExtra("editTitle", title);
                 intent.putExtra("editBody", body);
-
-
-
-                intent.putExtra("key",memoId);
-
-
+                intent.putExtra("key", memoId);
                 startActivity(intent);
                 finish();
 
+                // TODO 不要なコードなら消すこと
 //            case R.id.action_delete:
 //
 //                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
@@ -153,16 +144,7 @@ public class ViewActivity extends AppCompatActivity {
 //                });
 //                alertDialog.create().show();
 //                break;
-
-
-
-
         }
-
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 }
