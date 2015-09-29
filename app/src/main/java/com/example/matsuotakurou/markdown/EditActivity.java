@@ -32,7 +32,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
     private EditText myMemoBody;
     private String title = "";
     private String body = "";
-    private String htmlbody = "";
+    private String htmlbody = ""; // TODO 変数名はキャメルケースで記述する
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // TODO ユーザに見せるような文言はstrings.xmlに記述
         toolbar.setTitle("編集");
         setSupportActionBar(toolbar);
 
@@ -56,6 +57,8 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Log.i("check_Edit2", Long.toString(memoId));
 
+        // TODO 冗長なコードなので下記のとおりにするとよい
+        // isNewMemo = memoId == 0L;
         isNewMemo = memoId == 0L ? true : false;
 
         if (intent.getStringExtra("editBody") == null) {
@@ -94,6 +97,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // TODO 不要なコメントは消す
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
@@ -101,10 +105,11 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO 不要なコメントは消す
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        item.getItemId();
+        item.getItemId(); // TODO 不要なコード
         switch (item.getItemId()) {
             case R.id.action_save:
                 title = myMemoTitle.getText().toString().trim();
@@ -119,7 +124,10 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 }
 
 
+                // TODO 空文字判定は以下のように出来る
+                // TextUtils.isEmpty(title);
                 if (title.equals("")) {
+                    // TODO ユーザに見せるような文言はstrings.xmlに記述
                     Toast.makeText(
                             this,
                             "タイトルを入力してください",
@@ -156,7 +164,9 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
             case R.id.action_delete:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                // TODO ユーザに見せるような文言はstrings.xmlに記述
                 alertDialog.setTitle("削除の確認");
+                // TODO ユーザに見せるような文言はstrings.xmlに記述
                 alertDialog.setMessage("本当に削除してもよいですか");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -190,6 +200,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 }
 
                 if (title.equals("")) {
+                    // TODO ユーザに見せるような文言はstrings.xmlに記述
                     Toast.makeText(
                             this,
                             "タイトルを入力してください。",

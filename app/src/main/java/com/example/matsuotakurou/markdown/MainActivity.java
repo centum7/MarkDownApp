@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // TODO ユーザに見せるような文言はstrings.xmlに記述
         toolbar.setTitle("シンプルマークダウン");
         setSupportActionBar(toolbar);
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // TODO 不要なコメントは消す
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;

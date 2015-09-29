@@ -17,6 +17,8 @@ public class MyContentProvider extends ContentProvider {
     private static final int MEMOS = 1;
     private static final int MEMO_ITEM = 2;
 
+    // TODO 定数は大文字スネークケースで命名すること
+    // URI_MATCHER
     private static final UriMatcher uriMatcher;
 
     public static final Uri CONTENT_URI =
@@ -77,6 +79,7 @@ public class MyContentProvider extends ContentProvider {
                 null,
                 contentValues
         );
+        // TODO 使用されていない変数は削除すること
         Uri newUri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, newId);
         getContext().getContentResolver().notifyChange(uri, null);
         return null;

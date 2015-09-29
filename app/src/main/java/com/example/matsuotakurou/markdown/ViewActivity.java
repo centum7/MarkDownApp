@@ -23,12 +23,13 @@ public class ViewActivity extends AppCompatActivity {
     private boolean isNewMemo = true;
     private long memoId;
 
+    // TODO スコープは最低限に(onCreate内でしか使用していないように見える)
     private WebView mWebView;
     private TextView myMemoTitle;
 
     private String title = "";
     private String body = "";
-    private String htmlbody = "";
+    private String htmlbody = ""; // TODO 変数名はキャメルケースで記述する
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ViewActivity extends AppCompatActivity {
         mWebView = (WebView) findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        // TODO ユーザに見せるような文言はstrings.xmlに記述
         toolbar.setTitle("プレビュー");
         setSupportActionBar(toolbar);
 
@@ -50,6 +52,7 @@ public class ViewActivity extends AppCompatActivity {
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
 
+        // TODO 不要なコメントは消す
         //webview
 
         Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
@@ -87,6 +90,7 @@ public class ViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // TODO 不要なコメントは消す
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_view, menu);
         if (isNewMemo) {
@@ -97,6 +101,7 @@ public class ViewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // TODO 不要なコメントは消す
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -115,6 +120,7 @@ public class ViewActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+                // TODO 不要なコードなら消すこと
 //            case R.id.action_delete:
 //
 //                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
