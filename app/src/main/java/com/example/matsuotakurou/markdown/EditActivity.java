@@ -23,8 +23,8 @@ import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;
 
-public class EditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks{
 
+public class EditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks {
     private boolean isNewMemo = true;
     private long memoId;
 
@@ -39,18 +39,12 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-
-
         myMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
         myMemoBody = (EditText) findViewById(R.id.myMemoBody);
-
-
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setTitle("編集");
         setSupportActionBar(toolbar);
-
 
         Intent intent = getIntent();
 
@@ -62,14 +56,11 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Log.i("check_Edit2", Long.toString(memoId));
 
-
         isNewMemo = memoId == 0L ? true : false;
-
 
         if (intent.getStringExtra("editBody") == null) {
             // new memo
             Log.i("cheak", "new");
-
         } else {
             // edit memo
             Log.i("cheak", "edit");
@@ -105,7 +96,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit, menu);
-
         return true;
     }
 
@@ -165,7 +155,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 break;
 
             case R.id.action_delete:
-
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
                 alertDialog.setTitle("削除の確認");
                 alertDialog.setMessage("本当に削除してもよいですか");
@@ -174,7 +163,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
                         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
-                        String[] selectionArgs = new String[] { Long.toString(memoId) };
+                        String[] selectionArgs = new String[]{Long.toString(memoId)};
                         getContentResolver().delete(
                                 uri,
                                 selection,
@@ -187,7 +176,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 break;
 
             case R.id.action_from_edit_to_view:
-
                 /*1--------dbに保存--------1*/
 
                 title = myMemoTitle.getText().toString().trim();
@@ -200,7 +188,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
 
                 if (title.equals("")) {
                     Toast.makeText(
@@ -237,7 +224,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                     Intent intent = new Intent(EditActivity.this, ViewActivity.class);
                     intent.putExtra("editTitle", title);
                     intent.putExtra("editBody", body);
-                    intent.putExtra("EDIT_WEBVIEW",htmlbody);
+                    intent.putExtra("EDIT_WEBVIEW", htmlbody);
 //                    intent.putExtra("key",memoId);
                     Log.d("intent edit action_from_edit_to_view", String.valueOf(memoId));
 
@@ -271,11 +258,9 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader loader, Object data) {
-
     }
 
     @Override
     public void onLoaderReset(Loader loader) {
-
     }
 }

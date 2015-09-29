@@ -20,20 +20,15 @@ import java.io.IOException;
 
 
 public class ViewActivity extends AppCompatActivity {
-
-
     private boolean isNewMemo = true;
     private long memoId;
 
     private WebView mWebView;
-
     private TextView myMemoTitle;
 
     private String title = "";
     private String body = "";
-    private String htmlbody="";
-
-
+    private String htmlbody = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +36,11 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
 
         myMemoTitle = (TextView) findViewById(R.id.myMemoTitle);
-        mWebView = (WebView)findViewById(R.id.htmlview);
+        mWebView = (WebView) findViewById(R.id.htmlview);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setTitle("プレビュー");
         setSupportActionBar(toolbar);
-
 
         Intent intent = getIntent();
 
@@ -56,16 +50,16 @@ public class ViewActivity extends AppCompatActivity {
         memoId = intent.getLongExtra("key", 0L);
         isNewMemo = memoId == 0L ? true : false;
 
-    //webview
+        //webview
 
         Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
-        String[] projection = new String[] {
+        String[] projection = new String[]{
                 MyMemoContract.Memos.COLUMN_TITLE,
                 MyMemoContract.Memos.COLUMN_BODY,
                 MyMemoContract.Memos.COLUMN_HTMLBODY
         };
         String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
-        String[] selectionArgs = new String[] { Long.toString(memoId) };
+        String[] selectionArgs = new String[]{Long.toString(memoId)};
         Cursor cursor = getContentResolver().query(
                 uri,
                 projection,
@@ -86,13 +80,9 @@ public class ViewActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         myMemoTitle.setText(title);
         mWebView.loadData(htmlbody, "text/html; charset=UTF-8", null);
-
     }
-
-
 
 
     @Override
@@ -121,12 +111,7 @@ public class ViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewActivity.this, EditActivity.class);
                 intent.putExtra("editTitle", title);
                 intent.putExtra("editBody", body);
-
-
-
-                intent.putExtra("key",memoId);
-
-
+                intent.putExtra("key", memoId);
                 startActivity(intent);
                 finish();
 
@@ -153,16 +138,7 @@ public class ViewActivity extends AppCompatActivity {
 //                });
 //                alertDialog.create().show();
 //                break;
-
-
-
-
         }
-
-
-
-
-
         return super.onOptionsItemSelected(item);
     }
 }
