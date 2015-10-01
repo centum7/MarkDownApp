@@ -16,7 +16,7 @@ import android.widget.SimpleCursorAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks {
-    private SimpleCursorAdapter adapter;
+    private SimpleCursorAdapter mAdapter;
     public final static String EXTRA_MYID = "com.example.matsuotakurou.markdown.MYID";
 
     @Override
@@ -25,8 +25,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        // TODO ユーザに見せるような文言はstrings.xmlに記述
-        toolbar.setTitle("シンプルマークダウン");
+        toolbar.setTitle(R.string.toolbar_app_name);
         setSupportActionBar(toolbar);
 
         String[] from = {
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 android.R.id.text1,
         };
 
-        adapter = new SimpleCursorAdapter(
+        mAdapter = new SimpleCursorAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
                 null,
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         );
 
         ListView myListView = (ListView) findViewById(R.id.myListView);
-        myListView.setAdapter(adapter);
+        myListView.setAdapter(mAdapter);
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long myid) {
@@ -98,11 +97,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader loader, Object cursor) {
-        adapter.swapCursor((android.database.Cursor) cursor);
+        mAdapter.swapCursor((android.database.Cursor) cursor);
     }
 
     @Override
     public void onLoaderReset(Loader loader) {
-        adapter.swapCursor(null);
+        mAdapter.swapCursor(null);
     }
 }

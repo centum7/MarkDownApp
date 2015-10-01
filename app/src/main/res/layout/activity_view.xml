@@ -8,35 +8,6 @@
         layout="@layout/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.01"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="0.01"
-            android:background="#ff9529"
-            android:elevation="4dp"
-            android:gravity="center"
-            android:text="Title" />
-
-        <TextView
-            android:id="@+id/myMemoTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.05"
-            android:background="#ffa243"
-            android:gravity="center"
-            android:hint="title" />
-    </LinearLayout>
-
     <WebView
         android:id="@+id/htmlview"
         android:layout_width="match_parent"
