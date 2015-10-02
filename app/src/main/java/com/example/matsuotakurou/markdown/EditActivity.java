@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,15 +50,10 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Intent intent = getIntent();
 
-        Log.i("check_Edit1", Long.toString(memoId));
-
         mTitle = intent.getStringExtra("editTitle");
         mBody = intent.getStringExtra("editBody");
         memoId = intent.getLongExtra("key", memoId);
 
-        Log.i("check_Edit2", Long.toString(memoId));
-
-        // TODO 冗長なコードなので下記のとおりにするとよい
          isNewMemo = memoId == 0L;
 
         if (intent.getStringExtra("editBody") == null) {
@@ -97,16 +93,13 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO 不要なコメントは消す
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO 不要なコメントは消す
-        item.getItemId(); // TODO 不要なコード
+
         switch (item.getItemId()) {
             case R.id.action_save:
                 mTitle = mMyMemoTitle.getText().toString().trim();
@@ -120,11 +113,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                     e.printStackTrace();
                 }
 
-
-                // TODO 空文字判定は以下のように出来る
-                // TextUtils.isEmpty(title);
-                if (mTitle.equals("")) {
-                    // TODO ユーザに見せるような文言はstrings.xmlに記述
+                if (TextUtils.isEmpty(mTitle)) {
                     Toast.makeText(
                             this,
                             R.string.input_title,
@@ -161,9 +150,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
             case R.id.action_delete:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                // TODO ユーザに見せるような文言はstrings.xmlに記述
                 alertDialog.setTitle(R.string.check_title_delete);
-                // TODO ユーザに見せるような文言はstrings.xmlに記述
                 alertDialog.setMessage(R.string.final_check_delete);
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -197,8 +184,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 }
 
                 if (mTitle.equals("")) {
-                    // TODO ユーザに見せるような文言はstrings.xmlに記述
-                    //完了
                     Toast.makeText(
                             this,
                             R.string.input_title,
