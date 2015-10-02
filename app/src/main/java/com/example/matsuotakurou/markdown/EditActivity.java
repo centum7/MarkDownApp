@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,38 +29,32 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
     private boolean isNewMemo = true;
     private long memoId;
 
-    private EditText myMemoTitle;
-    private EditText myMemoBody;
-    private String title = "";
-    private String body = "";
-    private String htmlbody = ""; // TODO 変数名はキャメルケースで記述する
+    private EditText mMyMemoTitle;
+    private EditText mMyMemoBody;
+    private String mTitle = "";
+    private String mBody = "";
+    private String mHtmlBody = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        myMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
-        myMemoBody = (EditText) findViewById(R.id.myMemoBody);
+        mMyMemoTitle = (EditText) findViewById(R.id.myMemoTitle);
+        mMyMemoBody = (EditText) findViewById(R.id.myMemoBody);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        // TODO ユーザに見せるような文言はstrings.xmlに記述
-        toolbar.setTitle("編集");
+
+        toolbar.setTitle(R.string.edit_toolbar_title);
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
 
-        Log.i("check_Edit1", Long.toString(memoId));
-
-        title = intent.getStringExtra("editTitle");
-        body = intent.getStringExtra("editBody");
+        mTitle = intent.getStringExtra("editTitle");
+        mBody = intent.getStringExtra("editBody");
         memoId = intent.getLongExtra("key", memoId);
 
-        Log.i("check_Edit2", Long.toString(memoId));
-
-        // TODO 冗長なコードなので下記のとおりにするとよい
-        // isNewMemo = memoId == 0L;
-        isNewMemo = memoId == 0L ? true : false;
+         isNewMemo = memoId == 0L;
 
         if (intent.getStringExtra("editBody") == null) {
             // new memo
@@ -85,11 +80,12 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 null
         );
         while (cursor.moveToNext()) {
-            title = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_TITLE));
-            body = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_BODY));
+            mTitle = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_TITLE));
+            mBody = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_BODY));
         }
-        myMemoTitle.setText(title);
-        myMemoBody.setText(body);
+
+        mMyMemoTitle.setText(mTitle);
+        mMyMemoBody.setText(mBody);
 
         getLoaderManager().initLoader(0, null, this);
     }
@@ -97,47 +93,37 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO 不要なコメントは消す
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO 不要なコメントは消す
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        item.getItemId(); // TODO 不要なコード
+
         switch (item.getItemId()) {
             case R.id.action_save:
-                title = myMemoTitle.getText().toString().trim();
-                body = myMemoBody.getText().toString().trim();
+                mTitle = mMyMemoTitle.getText().toString().trim();
+                mBody = mMyMemoBody.getText().toString().trim();
 
                 Log.i("------markdown-----Edit", "start");
                 try {
-                    htmlbody = new Markdown4jProcessor().process(body);
-                    Log.i("------markdown-----Edit", htmlbody);
+                    mHtmlBody = new Markdown4jProcessor().process(mBody);
+                    Log.i("------markdown-----Edit", mHtmlBody);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-
-                // TODO 空文字判定は以下のように出来る
-                // TextUtils.isEmpty(title);
-                if (title.equals("")) {
-                    // TODO ユーザに見せるような文言はstrings.xmlに記述
+                if (TextUtils.isEmpty(mTitle)) {
                     Toast.makeText(
                             this,
-                            "タイトルを入力してください",
+                            R.string.input_title,
                             Toast.LENGTH_LONG
                     ).show();
                 } else {
                     ContentValues values = new ContentValues();
-                    values.put(MyMemoContract.Memos.COLUMN_TITLE, title);
-                    values.put(MyMemoContract.Memos.COLUMN_BODY, body);
-                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, htmlbody);
+                    values.put(MyMemoContract.Memos.COLUMN_TITLE, mTitle);
+                    values.put(MyMemoContract.Memos.COLUMN_BODY, mBody);
+                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, mHtmlBody);
                     Log.i("-----markdown------edit", MyMemoContract.Memos.COLUMN_HTMLBODY.toString());
                     if (isNewMemo) {
                         // insert
@@ -164,10 +150,8 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
 
             case R.id.action_delete:
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                // TODO ユーザに見せるような文言はstrings.xmlに記述
-                alertDialog.setTitle("削除の確認");
-                // TODO ユーザに見せるような文言はstrings.xmlに記述
-                alertDialog.setMessage("本当に削除してもよいですか");
+                alertDialog.setTitle(R.string.check_title_delete);
+                alertDialog.setMessage(R.string.final_check_delete);
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -188,29 +172,28 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
             case R.id.action_from_edit_to_view:
                 /*1--------dbに保存--------1*/
 
-                title = myMemoTitle.getText().toString().trim();
-                body = myMemoBody.getText().toString().trim();
+                mTitle = mMyMemoTitle.getText().toString().trim();
+                mBody = mMyMemoBody.getText().toString().trim();
 
                 Log.i("------markdown-----Edit", "start");
                 try {
-                    htmlbody = new Markdown4jProcessor().process(body);
-                    Log.i("------markdown-----Edit", htmlbody);
+                    mHtmlBody = new Markdown4jProcessor().process(mBody);
+                    Log.i("------markdown-----Edit",mHtmlBody);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-                if (title.equals("")) {
-                    // TODO ユーザに見せるような文言はstrings.xmlに記述
+                if (mTitle.equals("")) {
                     Toast.makeText(
                             this,
-                            "タイトルを入力してください。",
+                            R.string.input_title,
                             Toast.LENGTH_LONG
                     ).show();
                 } else {
                     ContentValues values = new ContentValues();
-                    values.put(MyMemoContract.Memos.COLUMN_TITLE, title);
-                    values.put(MyMemoContract.Memos.COLUMN_BODY, body);
-                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, htmlbody);
+                    values.put(MyMemoContract.Memos.COLUMN_TITLE, mTitle);
+                    values.put(MyMemoContract.Memos.COLUMN_BODY, mBody);
+                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, mHtmlBody);
                     Log.i("-----markdown------edit", MyMemoContract.Memos.COLUMN_HTMLBODY.toString());
                     if (isNewMemo) {
                         // insert
@@ -233,9 +216,9 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                     /*2-----編集画面に遷移-------2*/
 
                     Intent intent = new Intent(EditActivity.this, ViewActivity.class);
-                    intent.putExtra("editTitle", title);
-                    intent.putExtra("editBody", body);
-                    intent.putExtra("EDIT_WEBVIEW", htmlbody);
+                    intent.putExtra("editTitle", mTitle);
+                    intent.putExtra("editBody", mBody);
+                    intent.putExtra("EDIT_WEBVIEW", mHtmlBody);
 //                    intent.putExtra("key",memoId);
                     Log.d("intent edit action_from_edit_to_view", String.valueOf(memoId));
 

@@ -8,4 +8,11 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="input_title">タイトルを入力してください。</string>
+    <string name="check_title_delete">削除の確認</string>
+    <string name="final_check_delete">本当に削除してもよいですか</string>
+    <string name="edit_toolbar_title">Editer</string>
+    <string name="toolbar_app_name">シンプルマークダウン</string>
+
 </resources>
