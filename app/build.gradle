@@ -23,4 +23,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.1.0'
     compile files('libs/markdown4j-2.2.jar')
+    compile 'com.android.support:design:22.2.0'
+    // FloatingActionButton
+    compile 'com.getbase:floatingactionbutton:1.9.0'
+
 }
