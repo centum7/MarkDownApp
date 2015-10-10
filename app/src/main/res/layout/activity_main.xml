@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -23,6 +24,7 @@
         android:layout_marginRight="16dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/abc_switch_track_mtrl_alpha"
+        android:src="@drawable/ic_add_circle_outline_black_48dp"
+        design:fabSize="normal"
         app:backgroundTint="#fff"/>
 </RelativeLayout>
