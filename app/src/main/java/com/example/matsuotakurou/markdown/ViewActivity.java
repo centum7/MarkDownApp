@@ -3,14 +3,18 @@ package com.example.matsuotakurou.markdown;
 
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 
 import org.markdown4j.Markdown4jProcessor;
@@ -74,6 +78,22 @@ public class ViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         webView.loadData(mHtmlbody, "text/html; charset=UTF-8", null);
+
+
+        final Intent intent2 = new Intent(ViewActivity.this, EditActivity.class);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+        fab.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+                intent2.putExtra("editTitle", mTitle);
+                intent2.putExtra("editBody", mBody);
+                intent2.putExtra("key", memoId);
+                startActivity(intent2);
+                finish();
+            }
+        });
     }
 
 
