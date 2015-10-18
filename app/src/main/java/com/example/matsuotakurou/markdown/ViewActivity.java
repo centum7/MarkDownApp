@@ -12,8 +12,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -95,32 +93,5 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_view, menu);
-        if (isNewMemo) {
-            menu.getItem(0).setVisible(false);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.action_edit:
-                    /*
-                    editActivityにtitleとbodyを渡して遷移させる。
-                     */
-                Intent intent = new Intent(ViewActivity.this, EditActivity.class);
-                intent.putExtra("editTitle", mTitle);
-                intent.putExtra("editBody", mBody);
-                intent.putExtra("key", memoId);
-                startActivity(intent);
-                finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    
 }
