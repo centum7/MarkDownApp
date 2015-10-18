@@ -95,9 +95,9 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         com.getbase.floatingactionbutton.FloatingActionButton storeInCreateViewFloatingActionButton
                 = (FloatingActionButton) findViewById(R.id.store_button_in_create_view);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.store_button);
+        FloatingActionButton floatingActionButton1 = (FloatingActionButton) findViewById(R.id.store_button);
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mTitle = mMyMemoTitle.getText().toString().trim();
@@ -143,6 +143,96 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                     Intent intent = new Intent(EditActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                }
+            }
+        });
+
+        FloatingActionButton floatingActionButton2 = (FloatingActionButton) findViewById(R.id.x1_button);
+        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(EditActivity.this);
+                alertDialog.setTitle(R.string.check_title_delete);
+                alertDialog.setMessage(R.string.final_check_delete);
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+                        String[] selectionArgs = new String[]{Long.toString(memoId)};
+                        getContentResolver().delete(
+                                uri,
+                                selection,
+                                selectionArgs
+                        );
+                        finish();
+                    }
+                });
+                alertDialog.create().show();
+
+            }
+        });
+
+
+        FloatingActionButton floatingActionButton3 = (FloatingActionButton) findViewById(R.id.alert_button);
+        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mTitle = mMyMemoTitle.getText().toString().trim();
+                mBody = mMyMemoBody.getText().toString().trim();
+
+                Log.i("------markdown-----Edit", "start");
+                try {
+                    mHtmlBody = new Markdown4jProcessor().process(mBody);
+                    Log.i("------markdown-----Edit",mHtmlBody);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (mTitle.equals("")) {
+                    Toast.makeText(
+                            EditActivity.this,
+                            R.string.input_title,
+                            Toast.LENGTH_LONG
+                    ).show();
+                } else {
+                    ContentValues values = new ContentValues();
+                    values.put(MyMemoContract.Memos.COLUMN_TITLE, mTitle);
+                    values.put(MyMemoContract.Memos.COLUMN_BODY, mBody);
+                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, mHtmlBody);
+                    Log.i("-----markdown------edit", MyMemoContract.Memos.COLUMN_HTMLBODY.toString());
+                    if (isNewMemo) {
+                        // insert
+                        getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+                    } else {
+                        // updated
+                        Log.i("check_Edit3", Long.toString(memoId));
+                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+                        String[] selectionArgs = new String[]{Long.toString(memoId)};
+                        getContentResolver().update(
+                                uri,
+                                values,
+                                selection,
+                                selectionArgs
+                        );
+                    }
+                    /*1----------------1*/
+
+                    /*2-----編集画面に遷移-------2*/
+
+                    Intent intent = new Intent(EditActivity.this, ViewActivity.class);
+                    intent.putExtra("editTitle", mTitle);
+                    intent.putExtra("editBody", mBody);
+                    intent.putExtra("EDIT_WEBVIEW", mHtmlBody);
+//                    intent.putExtra("key",memoId);
+                    Log.d("intent edit action_from_edit_to_view", String.valueOf(memoId));
+
+                    startActivity(intent);
+                    finish();
+
+                    /*2----------------2*/
+
                 }
             }
         });
