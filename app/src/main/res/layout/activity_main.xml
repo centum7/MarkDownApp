@@ -24,7 +24,7 @@
         android:layout_marginRight="16dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_add_circle_outline_black_48dp"
+        android:src="@drawable/ic_action_action_note_add"
         design:fabSize="normal"
         app:backgroundTint="#fff"/>
 </RelativeLayout>
