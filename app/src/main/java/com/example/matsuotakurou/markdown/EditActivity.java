@@ -28,9 +28,6 @@ import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
-
 
 public class EditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks {
     private boolean isNewMemo = true;
@@ -94,7 +91,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         }
 
         FloatingActionsMenu floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
-        floatingActionsMenu.setVisibility(View.GONE);
 
         com.getbase.floatingactionbutton.FloatingActionButton storeInCreateViewFloatingActionButton
                 = (FloatingActionButton) findViewById(R.id.store_button_in_create_view);
@@ -104,11 +100,50 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(
-                        EditActivity.this,
-                        "Edit",
-                        Toast.LENGTH_LONG
-                ).show();
+                mTitle = mMyMemoTitle.getText().toString().trim();
+                mBody = mMyMemoBody.getText().toString().trim();
+
+                Log.i("------markdown-----Edit", "start");
+                try {
+                    mHtmlBody = new Markdown4jProcessor().process(mBody);
+                    Log.i("------markdown-----Edit", mHtmlBody);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if (TextUtils.isEmpty(mTitle)) {
+                    Toast.makeText(
+                            EditActivity.this,
+                            R.string.input_title,
+                            Toast.LENGTH_LONG
+                    ).show();
+                } else {
+                    ContentValues values = new ContentValues();
+                    values.put(MyMemoContract.Memos.COLUMN_TITLE, mTitle);
+                    values.put(MyMemoContract.Memos.COLUMN_BODY, mBody);
+                    values.put(MyMemoContract.Memos.COLUMN_HTMLBODY, mHtmlBody);
+                    Log.i("-----markdown------edit", MyMemoContract.Memos.COLUMN_HTMLBODY.toString());
+                    if (isNewMemo) {
+                        // insert
+                        getContentResolver().insert(MyContentProvider.CONTENT_URI, values);
+                    } else {
+                        // updated
+                        Log.i("check_Edit3", Long.toString(memoId));
+                        Uri uri = ContentUris.withAppendedId(MyContentProvider.CONTENT_URI, memoId);
+                        String selection = MyMemoContract.Memos.COLUMN_ID + " = ?";
+                        String[] selectionArgs = new String[]{Long.toString(memoId)};
+                        getContentResolver().update(
+                                uri,
+                                values,
+                                selection,
+                                selectionArgs
+                        );
+                    }
+                    Log.d("intent edit action_save", String.valueOf(memoId));
+                    Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
             }
         });
 
