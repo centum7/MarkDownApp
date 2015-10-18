@@ -6,8 +6,8 @@
     <color name="tabsScrollColor">#F57C00</color>
 
 
-    <color name="main_color">#00C853</color>
-    <color name="sub_color">#FFB300</color>
+    <color name="main_color">#F57C00</color>
+    <color name="sub_color">#FF9800</color>
 
     <!-- layout -->
     <color name="background_color">#fafafa</color>

@@ -62,10 +62,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         final Intent intent = new Intent(this, EditActivity.class);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+        fab.setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 startActivity(intent);
             }
         });

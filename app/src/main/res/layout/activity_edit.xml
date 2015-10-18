@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/main_color"
                 fab:fab_colorPressed="@color/sub_color"
-                fab:fab_icon="@drawable/ic_action_editor_mode_edit"
+                fab:fab_icon="@android:drawable/ic_menu_save"
                 fab:fab_size="mini"
                 fab:fab_title="保存" />
 
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/main_color"
                 fab:fab_colorPressed="@color/sub_color"
-                fab:fab_icon="@drawable/ic_action_editor_mode_edit"
+                fab:fab_icon="@drawable/ic_action_content_clear"
                 fab:fab_size="mini"
                 fab:fab_title="削除" />
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
