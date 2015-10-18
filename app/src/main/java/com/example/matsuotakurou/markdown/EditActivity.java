@@ -17,12 +17,19 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import org.markdown4j.Markdown4jProcessor;
 
 import java.io.IOException;
+
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class EditActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks {
@@ -49,6 +56,8 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
+
+
 
         mTitle = intent.getStringExtra("editTitle");
         mBody = intent.getStringExtra("editBody");
@@ -83,6 +92,30 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
             mTitle = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_TITLE));
             mBody = cursor.getString(cursor.getColumnIndex(MyMemoContract.Memos.COLUMN_BODY));
         }
+
+        FloatingActionsMenu floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.multiple_actions);
+        floatingActionsMenu.setVisibility(View.GONE);
+
+        com.getbase.floatingactionbutton.FloatingActionButton storeInCreateViewFloatingActionButton
+                = (FloatingActionButton) findViewById(R.id.store_button_in_create_view);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.store_button);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(
+                        EditActivity.this,
+                        "Edit",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+        storeInCreateViewFloatingActionButton.setVisibility(View.VISIBLE);
+        floatingActionsMenu.setVisibility(View.VISIBLE);
+
+
 
         mMyMemoTitle.setText(mTitle);
         mMyMemoBody.setText(mBody);
