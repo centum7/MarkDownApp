@@ -1,6 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -15,21 +16,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title"
+        android:layout_below="@+id/tool_bar"
         android:inputType="textNoSuggestions"
         android:theme="@style/EditTextColorControl" />
 
     <EditText
         android:id="@+id/myMemoBody"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:gravity="top"
+        android:layout_below="@+id/myMemoTitle"
         android:hint="Body"
         android:inputType="textMultiLine|textNoSuggestions"
         android:theme="@style/EditTextColorControl" />
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/store_button_in_create_view"
@@ -48,7 +54,7 @@
             fab:fab_addButtonColorNormal="@color/white"
             fab:fab_addButtonColorPressed="@color/white_pressed"
             fab:fab_addButtonPlusIconColor="@color/black_semi_transparent"
-            fab:fab_labelStyle="@style/menu_labels_style"            >
+            fab:fab_labelStyle="@style/menu_labels_style">
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/alert_button"
@@ -58,7 +64,7 @@
                 fab:fab_colorPressed="@color/sub_color"
                 fab:fab_icon="@drawable/ic_action_action_settings"
                 fab:fab_size="mini"
-                fab:fab_title="設定" />
+                fab:fab_title="プレビュー" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/store_button"
@@ -69,7 +75,17 @@
                 fab:fab_icon="@drawable/ic_action_editor_mode_edit"
                 fab:fab_size="mini"
                 fab:fab_title="保存" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/x1_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                fab:fab_colorNormal="@color/main_color"
+                fab:fab_colorPressed="@color/sub_color"
+                fab:fab_icon="@drawable/ic_action_editor_mode_edit"
+                fab:fab_size="mini"
+                fab:fab_title="削除" />
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     </FrameLayout>
-</LinearLayout>
+</RelativeLayout>
